@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>费率区域 · PonyPlus Docs</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 1 根据查询条件获取区域列表"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="费率区域 · PonyPlus Docs"/><meta property="og:type" content="website"/><meta property="og:url" content="https://facebook.github.io/gycsee.github.io/index.html"/><meta property="og:description" content="## 1 根据查询条件获取区域列表"/><meta property="og:image" content="https://facebook.github.io/gycsee.github.io/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://facebook.github.io/gycsee.github.io/img/docusaurus.png"/><link rel="shortcut icon" href="/gycsee.github.io/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://facebook.github.io/gycsee.github.io/blog/atom.xml" title="PonyPlus Docs Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://facebook.github.io/gycsee.github.io/blog/feed.xml" title="PonyPlus Docs Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gycsee.github.io/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gycsee.github.io/en"><img class="logo" src="/gycsee.github.io/img/docusaurus.svg" alt="PonyPlus Docs"/><h2 class="headerTitleWithLogo">PonyPlus Docs</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gycsee.github.io/docs/en/order.html" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/gycsee.github.io/docs/en/login.html" target="_self">API</a></li><li class=""><a href="/gycsee.github.io/en/help.html" target="_self">Help</a></li><li class=""><a href="/gycsee.github.io/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>运输费率</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">运输计划</h3><ul><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/order.html">运单</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/shipment.html">车次</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/optimization.html">优化请求</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/optparm.html">优化参数</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/integration.html">上传中心</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">运输费率</h3><ul><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/charge.html">主收费项目</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/range.html">收费阶梯</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/gycsee.github.io/docs/en/zone.html">费率</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基础资料</h3><ul><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/device.html">车型</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/provider.html">承运商</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/spdevicer.html">承运商可用资源</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/commodity.html">商品</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">系统设置</h3><ul><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/branch.html">公司</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/dept.html">部门</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/role.html">用户角色</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/user.html">用户</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/global.html">全局设置</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/domain.html">数据字典</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">用户权限</h3><ul><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/login.html">登录相关</a></li><li class="navListItem"><a class="navItem" href="/gycsee.github.io/docs/en/menu.html">菜单</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">费率区域</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="1-根据查询条件获取区域列表"></a><a href="#1-根据查询条件获取区域列表" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1 根据查询条件获取区域列表</h2>
+<h4><a class="anchor" aria-hidden="true" id="11-请求链接"></a><a href="#11-请求链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.1 请求链接</h4>
+<ul>
+<li>&lt;host&gt;/api/vrp/v1/zone/queryZone</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="12-请求类型"></a><a href="#12-请求类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.2 请求类型</h4>
+<ul>
+<li><em>POST</em></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="13-请求参数"></a><a href="#13-请求参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.3 请求参数</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">请求参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th><th style="text-align:center">是否必填</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">page</td><td style="text-align:center">Innteger</td><td style="text-align:center">页码</td><td style="text-align:center">是</td></tr>
+<tr><td style="text-align:center">size</td><td style="text-align:center">Integer</td><td style="text-align:center">每页展示条数</td><td style="text-align:center">是</td></tr>
+<tr><td style="text-align:center">zoneId</td><td style="text-align:center">String</td><td style="text-align:center">区域ID</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">zoneDesc</td><td style="text-align:center">String</td><td style="text-align:center">区域描述</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">layer</td><td style="text-align:center">String</td><td style="text-align:center">zone所属图层</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">deptId</td><td style="text-align:center">String</td><td style="text-align:center">部门ID</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">branchId</td><td style="text-align:center">String</td><td style="text-align:center">公司ID</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">createDtt.startDate</td><td style="text-align:center">LocalDate</td><td style="text-align:center">开始创建时间</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">createDtt.endDate</td><td style="text-align:center">LocalDate</td><td style="text-align:center">截止创建时间</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">createBy</td><td style="text-align:center">String</td><td style="text-align:center">创建人</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">updateDtt.startDate</td><td style="text-align:center">LocalDate</td><td style="text-align:center">开始更新时间</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">updateDtt.endDtt</td><td style="text-align:center">LocalDate</td><td style="text-align:center">截止更新时间</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">updateBy</td><td style="text-align:center">String</td><td style="text-align:center">最后更新人</td><td style="text-align:center">否</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="14-请求参数-示例"></a><a href="#14-请求参数-示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.4 请求参数示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">page</span>: <span class="hljs-number">1</span>, 
+  <span class="hljs-attribute">size</span>: <span class="hljs-number">10</span>, 
+  <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">layer</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">deptId</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">branchId</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">createDtt</span>: {
+    <span class="hljs-attribute">endDate</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">startDate</span>: <span class="hljs-string">''</span>
+  },
+  <span class="hljs-attribute">createBy</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">updateDtt</span>: {
+  <span class="hljs-attribute">endDate</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">startDate</span>: <span class="hljs-string">''</span>
+  },
+  <span class="hljs-attribute">updateBy</span>: <span class="hljs-string">''</span>
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="15-返回结果"></a><a href="#15-返回结果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.5 返回结果</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">返回参数</th><th style="text-align:left">参数类型</th><th style="text-align:left">参数描述</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">httpCode</td><td style="text-align:left">Integer</td><td style="text-align:left">http状态码</td></tr>
+<tr><td style="text-align:left">retCode</td><td style="text-align:left">Innteger</td><td style="text-align:left">返回结果编码</td></tr>
+<tr><td style="text-align:left">retInfo</td><td style="text-align:left">String</td><td style="text-align:left">返回结果英文信息</td></tr>
+<tr><td style="text-align:left">retMsg</td><td style="text-align:left">String</td><td style="text-align:left">返回结果中文信息</td></tr>
+<tr><td style="text-align:left">zoneId</td><td style="text-align:left">String</td><td style="text-align:left">区域ID</td></tr>
+<tr><td style="text-align:left">zoneDesc</td><td style="text-align:left">String</td><td style="text-align:left">区域描述</td></tr>
+<tr><td style="text-align:left">layer</td><td style="text-align:left">String</td><td style="text-align:left">所属图层</td></tr>
+<tr><td style="text-align:left">deptId</td><td style="text-align:left">String</td><td style="text-align:left">公司ID</td></tr>
+<tr><td style="text-align:left">deptName</td><td style="text-align:left">String</td><td style="text-align:left">公司名称</td></tr>
+<tr><td style="text-align:left">branchId</td><td style="text-align:left">String</td><td style="text-align:left">部门ID</td></tr>
+<tr><td style="text-align:left">branchName</td><td style="text-align:left">String</td><td style="text-align:left">部门名称</td></tr>
+<tr><td style="text-align:left">createDtt</td><td style="text-align:left">LocalDateTime</td><td style="text-align:left">创建时间（yyyy-mm-dd hh:mm:ss）</td></tr>
+<tr><td style="text-align:left">createBy</td><td style="text-align:left">String</td><td style="text-align:left">创建人</td></tr>
+<tr><td style="text-align:left">updateDtt</td><td style="text-align:left">LocalDateTime</td><td style="text-align:left">最后更新时间（yyyy-mm-dd hh:mm:ss）</td></tr>
+<tr><td style="text-align:left">updateBy</td><td style="text-align:left">String</td><td style="text-align:left">最后更新人</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="16-返回结果示例"></a><a href="#16-返回结果示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.6 返回结果示例</h4>
+<pre><code class="hljs">{
+<span class="hljs-attribute">list</span>: [{
+    <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">layer</span>: <span class="hljs-string">'RESTRICT'</span>,
+    <span class="hljs-attribute">deptId</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">branchId</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">deptName</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">branchName</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">createDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+    <span class="hljs-attribute">createBy</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">updateDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+    <span class="hljs-attribute">updateBy</span>: <span class="hljs-string">'aaa'</span>,
+  }，
+  {
+    <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'bbb'</span>,
+    <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'bbb'</span>,
+    <span class="hljs-attribute">layer</span>: <span class="hljs-string">'RESTRICT'</span>,
+    <span class="hljs-attribute">deptId</span>: <span class="hljs-string">'bbb'</span>,
+    <span class="hljs-attribute">branchId</span>: <span class="hljs-string">'bbb'</span>,
+    <span class="hljs-attribute">deptName</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">branchName</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">createDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+    <span class="hljs-attribute">createBy</span>: <span class="hljs-string">'bbb'</span>,
+    <span class="hljs-attribute">updateDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+    <span class="hljs-attribute">updateBy</span>: <span class="hljs-string">'bbb'</span>,
+  }],
+  <span class="hljs-attribute">total</span>: <span class="hljs-number">123</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="2-根据zoneid获取区域详情"></a><a href="#2-根据zoneid获取区域详情" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2 根据zoneId获取区域详情</h2>
+<h4><a class="anchor" aria-hidden="true" id="21-请求链接"></a><a href="#21-请求链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.1 请求链接</h4>
+<ul>
+<li>&lt;host&gt;/api/vrp/v1/zone/getZoneById/{zoneId}</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="22-请求类型"></a><a href="#22-请求类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.2 请求类型</h4>
+<ul>
+<li><em>GET</em></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="23-请求参数"></a><a href="#23-请求参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3 请求参数</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">请求参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th><th style="text-align:center">是否必填</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">zoneId</td><td style="text-align:center">String</td><td style="text-align:center">区域ID</td><td style="text-align:center">是</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="24-请求参数-示例"></a><a href="#24-请求参数-示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4 请求参数示例</h4>
+<p>‘zone_id’</p>
+<h4><a class="anchor" aria-hidden="true" id="25-返回结果"></a><a href="#25-返回结果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.5 返回结果</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">返回参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">httpCode</td><td style="text-align:center">Integer</td><td style="text-align:center">http状态码</td></tr>
+<tr><td style="text-align:center">retCode</td><td style="text-align:center">Innteger</td><td style="text-align:center">返回结果编码</td></tr>
+<tr><td style="text-align:center">retInfo</td><td style="text-align:center">String</td><td style="text-align:center">返回结果英文信息</td></tr>
+<tr><td style="text-align:center">retMsg</td><td style="text-align:center">String</td><td style="text-align:center">返回结果中文信息</td></tr>
+<tr><td style="text-align:center">zoneId</td><td style="text-align:center">String</td><td style="text-align:center">区域ID</td></tr>
+<tr><td style="text-align:center">zoneDesc</td><td style="text-align:center">String</td><td style="text-align:center">区域描述</td></tr>
+<tr><td style="text-align:center">layer</td><td style="text-align:center">String</td><td style="text-align:center">zone所属图层</td></tr>
+<tr><td style="text-align:center">deptId</td><td style="text-align:center">String</td><td style="text-align:center">部门ID</td></tr>
+<tr><td style="text-align:center">deptName</td><td style="text-align:center">String</td><td style="text-align:center">部门名称</td></tr>
+<tr><td style="text-align:center">branchId</td><td style="text-align:center">String</td><td style="text-align:center">公司ID</td></tr>
+<tr><td style="text-align:center">branchName</td><td style="text-align:center">String</td><td style="text-align:center">公司名称</td></tr>
+<tr><td style="text-align:center">createDtt</td><td style="text-align:center">LocalDateTime</td><td style="text-align:center">创建时间（yyyy-mm-dd hh:mm:ss）</td></tr>
+<tr><td style="text-align:center">createBy</td><td style="text-align:center">String</td><td style="text-align:center">创建人</td></tr>
+<tr><td style="text-align:center">updateDtt</td><td style="text-align:center">LocalDateTime</td><td style="text-align:center">最后更新时间（yyyy-mm-dd hh:mm:ss）</td></tr>
+<tr><td style="text-align:center">updateBy</td><td style="text-align:center">String</td><td style="text-align:center">最后更新人</td></tr>
+<tr><td style="text-align:center">id</td><td style="text-align:center">Integer</td><td style="text-align:center">区域明细ID</td></tr>
+<tr><td style="text-align:center">zoneId</td><td style="text-align:center">String</td><td style="text-align:center">区域ID</td></tr>
+<tr><td style="text-align:center">country</td><td style="text-align:center">String</td><td style="text-align:center">国家</td></tr>
+<tr><td style="text-align:center">city</td><td style="text-align:center">String</td><td style="text-align:center">城市</td></tr>
+<tr><td style="text-align:center">state</td><td style="text-align:center">String</td><td style="text-align:center">省份</td></tr>
+<tr><td style="text-align:center">district</td><td style="text-align:center">String</td><td style="text-align:center">区/镇/乡</td></tr>
+<tr><td style="text-align:center">fromZipcode</td><td style="text-align:center">String</td><td style="text-align:center">起始邮编</td></tr>
+<tr><td style="text-align:center">toZipcode</td><td style="text-align:center">String</td><td style="text-align:center">结束邮编</td></tr>
+<tr><td style="text-align:center">locId</td><td style="text-align:center">String</td><td style="text-align:center">运输地点编码</td></tr>
+<tr><td style="text-align:center">locDesc</td><td style="text-align:center">String</td><td style="text-align:center">运输地点描述</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="26-返回结果示例"></a><a href="#26-返回结果示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.6 返回结果示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">layer</span>: <span class="hljs-string">'RESTRICT'</span>,
+  <span class="hljs-attribute">deptId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">branchId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">deptName</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">branchName</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">createDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+  <span class="hljs-attribute">createBy</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">updateDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+  <span class="hljs-attribute">updateBy</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">zoneDetail</span>: [{
+    <span class="hljs-attribute">id</span>: <span class="hljs-string">'1'</span>,
+    <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locDesc</span>: <span class="hljs-string">''</span>,
+  }, {
+    <span class="hljs-attribute">id</span>: <span class="hljs-string">'2'</span>,
+    <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locDesc</span>: <span class="hljs-string">''</span>,
+  }] 
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="3-更新区域详情"></a><a href="#3-更新区域详情" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3 更新区域详情</h2>
+<h4><a class="anchor" aria-hidden="true" id="31-请求链接"></a><a href="#31-请求链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.1 请求链接</h4>
+<ul>
+<li>&lt;host&gt;/api/vrp/v1/zone/updateZone</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="32-请求类型"></a><a href="#32-请求类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.2 请求类型</h4>
+<ul>
+<li><em>PUT</em></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="33-请求参数"></a><a href="#33-请求参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.3 请求参数</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">请求参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th><th style="text-align:center">是否必填</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">zoneId</td><td style="text-align:center">String</td><td style="text-align:center">区域ID</td><td style="text-align:center">是</td></tr>
+<tr><td style="text-align:center">zoneDesc</td><td style="text-align:center">String</td><td style="text-align:center">区域描述</td><td style="text-align:center">是</td></tr>
+<tr><td style="text-align:center">id</td><td style="text-align:center">Integer</td><td style="text-align:center">区域明细ID</td><td style="text-align:center">是</td></tr>
+<tr><td style="text-align:center">country</td><td style="text-align:center">String</td><td style="text-align:center">国家</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">state</td><td style="text-align:center">String</td><td style="text-align:center">省份</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">city</td><td style="text-align:center">String</td><td style="text-align:center">城市</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">district</td><td style="text-align:center">String</td><td style="text-align:center">区/镇/乡</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">fromZipcode</td><td style="text-align:center">String</td><td style="text-align:center">起始邮编</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">toZipcode</td><td style="text-align:center">String</td><td style="text-align:center">结束邮编</td><td style="text-align:center">否</td></tr>
+<tr><td style="text-align:center">locId</td><td style="text-align:center">String</td><td style="text-align:center">运输地点编码</td><td style="text-align:center">否</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="34-请求参数-示例"></a><a href="#34-请求参数-示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.4 请求参数示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">updateList</span>: [{
+    <span class="hljs-attribute">id</span>: <span class="hljs-string">'1'</span>,
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    }, {
+    <span class="hljs-attribute">id</span>: <span class="hljs-string">'2'</span>,
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    }
+  ],
+  <span class="hljs-attribute">deleteList</span>: [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>],
+  <span class="hljs-attribute">addList</span>: [{
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    }, {
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="35-返回结果"></a><a href="#35-返回结果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.5 返回结果</h4>
+<p>|返回参数|参数类型|参数说明|
+|:-|:-|:-|:-|
+|httpCode|Integer|http状态码|
+|retCode|Innteger|返回结果编码|
+|retInfo|String|返回结果英文信息|
+|retMsg|String|返回结果中文信息|
+|zoneId|String|区域ID|
+|zoneDesc|String|区域描述|
+|layer|String|zone所属图层|
+|deptId|String|部门ID|
+|branchId|String|公司ID|
+|createDtt|LocalDateTime|创建时间（yyyy-mm-dd hh:mm:ss）|
+|createBy|String|创建人|
+|updateDtt|LocalDateTime|最后更新时间（yyyy-mm-dd hh:mm:ss）|
+|updateBy|String|最后更新人|</p>
+<h4><a class="anchor" aria-hidden="true" id="36-返回结果示例"></a><a href="#36-返回结果示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.6 返回结果示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">layer</span>: <span class="hljs-string">'RESTRICT'</span>,
+  <span class="hljs-attribute">deptId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">branchId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">deptName</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">branchName</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attribute">createDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+  <span class="hljs-attribute">createBy</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">updateDtt</span>: <span class="hljs-string">'2018-12-11 09:00:00'</span>,
+  <span class="hljs-attribute">updateBy</span>: <span class="hljs-string">'aaa'</span>,
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="4-新增区域详情"></a><a href="#4-新增区域详情" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4 新增区域详情</h2>
+<h4><a class="anchor" aria-hidden="true" id="41-请求链接"></a><a href="#41-请求链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.1 请求链接</h4>
+<ul>
+<li>&lt;host&gt;/api/vrp/v1/zone/addZone</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="42-请求类型"></a><a href="#42-请求类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.2 请求类型</h4>
+<ul>
+<li><em>POST</em></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="43-请求参数"></a><a href="#43-请求参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.3 请求参数</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">请求参数</th><th style="text-align:left">参数类型</th><th style="text-align:left">参数说明</th><th style="text-align:left">是否必填</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">zoneId</td><td style="text-align:left">String</td><td style="text-align:left">区域ID</td><td style="text-align:left">是</td></tr>
+<tr><td style="text-align:left">zoneDesc</td><td style="text-align:left">String</td><td style="text-align:left">区域描述</td><td style="text-align:left">是</td></tr>
+<tr><td style="text-align:left">layer</td><td style="text-align:left">String</td><td style="text-align:left">所属图层</td><td style="text-align:left">是</td></tr>
+<tr><td style="text-align:left">deptId</td><td style="text-align:left">String</td><td style="text-align:left">部门</td><td style="text-align:left">是</td></tr>
+<tr><td style="text-align:left">branchId</td><td style="text-align:left">String</td><td style="text-align:left">公司</td><td style="text-align:left">是</td></tr>
+<tr><td style="text-align:left">country</td><td style="text-align:left">String</td><td style="text-align:left">国家</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">String</td><td style="text-align:left">省份</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">city</td><td style="text-align:left">String</td><td style="text-align:left">城市</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">district</td><td style="text-align:left">Strintg</td><td style="text-align:left">区/镇/乡</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">fromZipcode</td><td style="text-align:left">String</td><td style="text-align:left">起始邮编</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">toZipcode</td><td style="text-align:left">String</td><td style="text-align:left">结束邮编</td><td style="text-align:left">否</td></tr>
+<tr><td style="text-align:left">locId</td><td style="text-align:left">String</td><td style="text-align:left">运输地点</td><td style="text-align:left">否</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="44-请求参数-示例"></a><a href="#44-请求参数-示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.4 请求参数示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">zoneId</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">zoneDesc</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">layer</span>: <span class="hljs-string">'aaa'</span>,
+  <span class="hljs-attribute">deptId</span>: <span class="hljs-string">'DEPPON-HZ'</span>,
+  <span class="hljs-attribute">branchId</span>: <span class="hljs-string">'DEPPON'</span>,
+  <span class="hljs-attribute">zoneDetail</span>: [{
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+    }, {
+    <span class="hljs-attribute">country</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">state</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">city</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">district</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">fromZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">toZipcode</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attribute">locId</span>: <span class="hljs-string">''</span>,
+   }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="45-返回结果"></a><a href="#45-返回结果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.5 返回结果</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">返回参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">httpCode</td><td style="text-align:center">Integer</td><td style="text-align:center">http状态码</td></tr>
+<tr><td style="text-align:center">retCode</td><td style="text-align:center">Innteger</td><td style="text-align:center">返回结果编码</td></tr>
+<tr><td style="text-align:center">retInfo</td><td style="text-align:center">String</td><td style="text-align:center">返回结果英文信息</td></tr>
+<tr><td style="text-align:center">retMsg</td><td style="text-align:center">String</td><td style="text-align:center">返回结果中文信息</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="46-返回结果示例"></a><a href="#46-返回结果示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.6 返回结果示例</h4>
+<p>成功或失败的提示信息</p>
+<h2><a class="anchor" aria-hidden="true" id="5-批量删除区域"></a><a href="#5-批量删除区域" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5 批量删除区域</h2>
+<h4><a class="anchor" aria-hidden="true" id="51-请求链接"></a><a href="#51-请求链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.1 请求链接</h4>
+<ul>
+<li>&lt;host&gt;/api/vrp/v1/zone/deleteBatchZone</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="52-请求类型"></a><a href="#52-请求类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.2 请求类型</h4>
+<ul>
+<li><em>DELETE</em></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="53-请求参数"></a><a href="#53-请求参数" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.3 请求参数</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">请求参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th><th style="text-align:center">是否必填</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">zoneIds</td><td style="text-align:center">List&lt;String&gt;</td><td style="text-align:center">区域ID列表</td><td style="text-align:center">是</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="54-请求参数-示例"></a><a href="#54-请求参数-示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.4 请求参数示例</h4>
+<p>{
+zoneIds: ['zone_id_1', 'zone_id_2', 'zone_id_3']
+}</p>
+<h4><a class="anchor" aria-hidden="true" id="55-返回结果"></a><a href="#55-返回结果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.5 返回结果</h4>
+<table>
+<thead>
+<tr><th style="text-align:center">返回参数</th><th style="text-align:center">参数类型</th><th style="text-align:center">参数说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">httpCode</td><td style="text-align:center">Integer</td><td style="text-align:center">http状态码</td></tr>
+<tr><td style="text-align:center">retCode</td><td style="text-align:center">Innteger</td><td style="text-align:center">返回结果编码</td></tr>
+<tr><td style="text-align:center">retInfo</td><td style="text-align:center">String</td><td style="text-align:center">返回结果英文信息</td></tr>
+<tr><td style="text-align:center">retMsg</td><td style="text-align:center">String</td><td style="text-align:center">返回结果中文信息</td></tr>
+<tr><td style="text-align:center">error</td><td style="text-align:center">List&lt;ErrorVO&gt;</td><td style="text-align:center">删除失败信息列表</td></tr>
+<tr><td style="text-align:center">success</td><td style="text-align:center">List&lt;String&gt;</td><td style="text-align:center">删除成功的id列表</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="56-返回结果示例"></a><a href="#56-返回结果示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.6 返回结果示例</h4>
+<pre><code class="hljs">{
+  <span class="hljs-attribute">success</span>: [<span class="hljs-string">'zone_id_1'</span>],
+  error: [{
+    id: <span class="hljs-string">'zone_id_2'</span>,
+    error: <span class="hljs-string">'zone_id_2'</span>
+    }, {
+    <span class="hljs-attribute">id</span>: <span class="hljs-string">'zone_id_3'</span>,
+    error: <span class="hljs-string">'zone_id_3'</span>,
+    }
+  ]
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/gycsee.github.io/docs/en/range.html">← 收费阶梯</a><a class="docs-next button" href="/gycsee.github.io/docs/en/device.html">车型 →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-根据查询条件获取区域列表">1 根据查询条件获取区域列表</a></li><li><a href="#2-根据zoneid获取区域详情">2 根据zoneId获取区域详情</a></li><li><a href="#3-更新区域详情">3 更新区域详情</a></li><li><a href="#4-新增区域详情">4 新增区域详情</a></li><li><a href="#5-批量删除区域">5 批量删除区域</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gycsee.github.io/" class="nav-home"><img src="/gycsee.github.io/img/docusaurus.svg" alt="PonyPlus Docs" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gycsee.github.io/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gycsee.github.io/docs/en/doc2.html">Guides (or other categories)</a><a href="/gycsee.github.io/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gycsee.github.io/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gycsee.github.io/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gycsee.github.io/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Your Name or Your Company Name</section></footer></div></body></html>
